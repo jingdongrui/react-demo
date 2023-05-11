@@ -13,7 +13,7 @@ interface TodosProps {
   title: string,
   completed: boolean,
 }
-const Todos: React.FC<{ data: TodosProps[] }> = (props) => {
+const TodoList: React.FC<{ data: TodosProps[] }> = (props) => {
   // console.log("Todos渲染了！", new Date());
   const { data } = props
   const [todoList, setTodoList] = useState(data)
@@ -111,4 +111,4 @@ const TodosItem: React.FC<TodosItemProps> = (props) => {
   )
 }
 
-export default Todos
+export default TodoList
