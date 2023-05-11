@@ -13,7 +13,6 @@ interface TodosProps {
   title: string,
   completed: boolean,
 }
-
 const Todos: React.FC<{ data: TodosProps[] }> = (props) => {
   // console.log("Todos渲染了！", new Date());
   const { data } = props
@@ -32,8 +31,7 @@ const Todos: React.FC<{ data: TodosProps[] }> = (props) => {
     todoList.splice(index, 1)
     setTodoList([...todoList])
   }
-  const handleCheck = (taskid: number, isCompleted: boolean) => {
-    console.log(taskid);
+  const handleCheck = (taskid: number) => {
     const index = todoList.findIndex((item) => item.id === taskid)
     todoList[index].completed = !todoList[index].completed
     setTodoList([...todoList])
@@ -55,6 +53,7 @@ const Todos: React.FC<{ data: TodosProps[] }> = (props) => {
     </>
   )
 }
+
 interface TodosFormProps {
   addTask: (userInput: string) => void
 }
@@ -63,6 +62,7 @@ const TodosForm: React.FC<TodosFormProps> = (props) => {
   const [userInput, setUserInput] = useState("")
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
+    if (!userInput) return false
     addTask(userInput)
     setUserInput("")
   }
@@ -75,6 +75,7 @@ const TodosForm: React.FC<TodosFormProps> = (props) => {
             placeholder="do something"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
+            onKeyUp={() => handleSubmit}
           />
           <Button type="submit" variant="outline-secondary">
             ADD
