@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #efeeee;
 
   .button-container {
@@ -40,7 +40,8 @@
         /* 过渡时间 ease-out是指先快速 后慢速 */
         transition: all 0.2s ease-out;
         img {
-          width: 60px;
+          width: 100%;
+          padding: 20px;
           transition: all 0.2s ease-out;
         }
       }
@@ -70,6 +71,21 @@
       }
       p {
         color: slategrey;
+        margin: 0;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .spin {
+          animation: logo-spin infinite 20s linear;
+        }
+      }
+      @keyframes logo-spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
       }
     }
   }

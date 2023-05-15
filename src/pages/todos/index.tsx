@@ -1,7 +1,7 @@
 
 import TodoList from "../../components/TodoList/index";
 
-const Todos = () => {
+const Todos: React.FC = () => {
   const data = feachTodos()
 
   return (

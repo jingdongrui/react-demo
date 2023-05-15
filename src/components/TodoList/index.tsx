@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useState } from "react";
 import type { FormEvent } from "react";
+import { useNavigate } from 'react-router-dom';
 
 interface TodosProps {
   id: number,
@@ -15,6 +16,7 @@ interface TodosProps {
 }
 const TodoList: React.FC<{ data: TodosProps[] }> = (props) => {
   // console.log("Todos渲染了！", new Date());
+  const navigate = useNavigate();
   const { data } = props
   const [todoList, setTodoList] = useState(data)
 
@@ -41,7 +43,12 @@ const TodoList: React.FC<{ data: TodosProps[] }> = (props) => {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand>Brand text</Navbar.Brand>
+          <Navbar.Brand>Navbar</Navbar.Brand>
+          <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text>
+              <a onClick={() => navigate('/home')}>主页</a>
+            </Navbar.Text>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
       <Container>
