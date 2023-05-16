@@ -1,0 +1,112 @@
+.page-workplace-container {
+  height: 100%;
+
+  .workplace-info {
+    padding: 16px 24px;
+    background-color: #fff;
+
+    .info-header {
+      .title {
+        margin-right: 12px;
+        margin-bottom: 0;
+        color: rgba(0, 0, 0, 0.85);
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 32px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+    .info-content {
+      padding: 12px 0 0 0;
+      .detail {
+        display: flex;
+        justify-content: space-between;
+        .info {
+          display: flex;
+          .img {
+            width: 72px;
+            height: 72px;
+            border-radius: 72px;
+            background-color: aqua;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .info-detail {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 0 0 24px;
+            .title {
+              margin-bottom: 12px;
+              color: rgba(0, 0, 0, 0.85);
+              font-weight: 500;
+              font-size: 20px;
+              line-height: 28px;
+            }
+            .detail {
+              color: rgba(0, 0, 0, 0.45);
+            }
+          }
+        }
+      }
+    }
+  }
+  .workplace-content {
+    width: 100%;
+
+    padding: 24px;
+
+    .card-container {
+      display: flex;
+      .card-box {
+        display: flex;
+
+        .img {
+          img {
+            width: 80px;
+            height: 80px;
+          }
+        }
+        .info {
+          // width: 150px;
+          margin: 0 0 0 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+
+          .title {
+            line-height: 45px;
+            color: rgba(0, 0, 0, 0.85);
+            font-weight: 600;
+            font-size: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+          .detail {
+            flex: 1;
+            color: rgba(0, 0, 0, 0.45);
+            // font-weight: 600;
+            font-size: 14px;
+            // width: 150px;
+            height: 45px;
+            // overflow: hidden;
+            // white-space: nowrap;
+            // text-overflow: ellipsis;
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            white-space: normal !important;
+            -webkit-line-clamp: 2; /* 控制在第几行进行加省略号 */
+            -webkit-box-orient: vertical;
+          }
+        }
+      }
+    }
+  }
+}

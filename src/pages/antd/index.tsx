@@ -2,12 +2,13 @@ import React from 'react';
 import { LaptopOutlined, UserOutlined, PieChartOutlined, DesktopOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 type MenuItem = Required<MenuProps>['items'][number];
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Layout, Menu, theme } from 'antd';
 import "./index.scss"
-import { Route, Routes, Navigate, useLocation, useRoutes } from "react-router-dom";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import Workplace from "./pages/workplace/index";
 import TableList from "./pages/table-list/index";
 import { useNavigate } from 'react-router-dom';
+import antd_logo from "../../assets/images/button/antd_logo.svg";
 const { Header, Content, Sider } = Layout;
 
 const getItem = (
@@ -41,11 +42,11 @@ const items2: MenuItem[] = [
     getItem('Submenu', 'sub12', null, [getItem('Option 13', '14'), getItem('Option 15', '16')]),
   ]),
 ];
-const items1: MenuItem[] = [
-  getItem('nav 1', '1'),
-  getItem('nav 2', '2'),
-  getItem('nav 3', '3'),
-];
+// const items1: MenuItem[] = [
+//   getItem('nav 1', '1'),
+//   getItem('nav 2', '2'),
+//   getItem('nav 3', '3'),
+// ];
 
 
 
@@ -66,8 +67,15 @@ const Antd: React.FC = () => {
     <>
       <Layout className='layout'>
         <Header className="header">
-          <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} items={items1} />
+          <div className='header-glob'>
+            <div className="logo" >
+              <a>
+                <img src={antd_logo} alt="antd_logo" />
+                <h1>Ant Design</h1>
+              </a>
+            </div>
+            <div className='placeholder'></div>
+          </div>
         </Header>
         <Layout>
           <Sider width={200} style={{ background: colorBgContainer }}>
@@ -79,15 +87,17 @@ const Antd: React.FC = () => {
               onClick={toLink}
             />
           </Sider>
-          <Layout style={{ padding: '24px 24px 24px' }}>
+          <Layout
+          // style={{ padding: '24px 24px 24px' }}
+          >
             {/* <Breadcrumb items={[{ title: "Home" }, { title: "List" }, { title: "App" }]} style={{ margin: '16px 0' }} /> */}
             <Content
-              style={{
-                padding: 24,
-                margin: 0,
-                minHeight: 280,
-                background: colorBgContainer,
-              }}
+            // style={{
+            //   padding: 24,
+            //   margin: 0,
+            //   minHeight: 280,
+            //   background: colorBgContainer,
+            // }}
             >
               <Routes>
                 <Route path="/" element={<Navigate to="/antd/workplace" />} />
