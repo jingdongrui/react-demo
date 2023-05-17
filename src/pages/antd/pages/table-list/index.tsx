@@ -31,10 +31,11 @@ const TableList: React.FC = () => {
                 </Form.Item>
               </Col>
               <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-                <Form.Item className="search-form-control">
-                  <Button>重置</Button>
-                  <Button type="primary">查询</Button>
-                  <a >展开<UpOutlined /></a>
+                <Form.Item>
+                  <div className="search-form-control">
+                    <Button>重置</Button>
+                    <Button type="primary">查询</Button>
+                    <a>展开<UpOutlined /></a></div>
                 </Form.Item>
               </Col>
             </Row>
