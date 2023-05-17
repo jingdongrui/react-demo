@@ -1,0 +1,16 @@
+.table-list-container {
+  .main {
+    padding: 24px;
+
+    .search {
+      padding: 24px 24px 0 24px;
+      background-color: #fff;
+
+      .search-form-control {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+    }
+  }
+}

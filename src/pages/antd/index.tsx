@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { LaptopOutlined, UserOutlined, PieChartOutlined, DesktopOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 type MenuItem = Required<MenuProps>['items'][number];
@@ -27,42 +27,42 @@ const getItem = (
 }
 const items2: MenuItem[] = [
   getItem('工作台', '/antd/workplace', <DesktopOutlined />),
-  getItem('列表页', 'sub2', <PieChartOutlined />, [
-    getItem('查询列表', '/antd/table-list'),
-    getItem('XX列表', '4'),
+  getItem('列表页', 'list', <PieChartOutlined />, [
+    getItem('查询列表', '/antd/list/table-list'),
+    getItem('XX列表', '/antd/list/4'),
   ]),
-  getItem('表单页', 'sub5', <UserOutlined />, [
-    getItem('Option 6', '6'),
-    getItem('Option 7', '7'),
-    getItem('Option 8', '8'),
+  getItem('表单页', 'form', <UserOutlined />, [
+    getItem('Option 6', '/antd/form/6'),
+    getItem('Option 7', '/antd/form/7'),
+    getItem('Option 8', '/antd/form/8'),
   ]),
-  getItem('结果页', 'sub9', <LaptopOutlined />, [
-    getItem('Option 10', '10'),
-    getItem('Option 11', '11'),
-    getItem('Submenu', 'sub12', null, [getItem('Option 13', '14'), getItem('Option 15', '16')]),
+  getItem('结果页', 'result', <LaptopOutlined />, [
+    getItem('Option 10', '/antd/result/10'),
+    getItem('Option 11', '/antd/result/11'),
+    getItem('Submenu', 'Submenu', null, [getItem('Option 13', '/antd/result/Submenu/14'), getItem('Option 15', '/antd/result/Submenu/16')]),
   ]),
 ];
-// const items1: MenuItem[] = [
-//   getItem('nav 1', '1'),
-//   getItem('nav 2', '2'),
-//   getItem('nav 3', '3'),
-// ];
-
-
 
 const Antd: React.FC = () => {
   const location = useLocation();
-  // const routeMatch = useRoutes(routes, location.pathname);
-  console.log(location);
   const navigate = useNavigate();
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const toLink = ({ key }: { key: string }) => {
-    navigate(key);
-  }
+  // 设置初始选中菜单项
+  useEffect(() => {
+    const path = location.pathname;
+    setSelectedKeys([path]);
+  }, [location]);
 
+  // 处理菜单项点击事件
+  const handleMenuClick = (e: any) => {
+    setSelectedKeys([e.key])
+    navigate(e.key);
+  };
   return (
     <>
       <Layout className='layout'>
@@ -81,10 +81,11 @@ const Antd: React.FC = () => {
           <Sider width={200} style={{ background: colorBgContainer }}>
             <Menu
               mode="inline"
-              defaultSelectedKeys={['/antd/workplace']}
+              defaultOpenKeys={location.pathname.split("/").slice(2)}
+              selectedKeys={selectedKeys}
+              onClick={handleMenuClick}
               style={{ height: '100%', borderRight: 0 }}
               items={items2}
-              onClick={toLink}
             />
           </Sider>
           <Layout
@@ -102,7 +103,7 @@ const Antd: React.FC = () => {
               <Routes>
                 <Route path="/" element={<Navigate to="/antd/workplace" />} />
                 <Route path="workplace" element={<Workplace />} />
-                <Route path="table-list" element={<TableList />} />
+                <Route path="/list/table-list" element={<TableList />} />
               </Routes>
             </Content>
           </Layout>

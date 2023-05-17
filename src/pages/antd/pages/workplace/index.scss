@@ -57,11 +57,10 @@
   }
   .workplace-content {
     width: 100%;
-
     padding: 24px;
 
     .card-container {
-      display: flex;
+      // display: flex;
       .card-box {
         display: flex;
 
@@ -79,7 +78,7 @@
           justify-content: flex-start;
 
           .title {
-            line-height: 45px;
+            line-height: 35px;
             color: rgba(0, 0, 0, 0.85);
             font-weight: 600;
             font-size: 20px;
@@ -93,7 +92,7 @@
             // font-weight: 600;
             font-size: 14px;
             // width: 150px;
-            height: 45px;
+            height: 55px;
             // overflow: hidden;
             // white-space: nowrap;
             // text-overflow: ellipsis;
@@ -108,5 +107,18 @@
         }
       }
     }
+    .card-container-nav {
+      display: flex;
+      flex-wrap: wrap;
+
+      .nav-box {
+        // box-sizing: border-box;
+        display: inline-block;
+        color: #000;
+      }
+    }
   }
+}
+.marginBottom16 {
+  margin-bottom: 16px;
 }
