@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row } from 'antd';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import "./index.scss"
 import { UpOutlined } from "@ant-design/icons";
 
@@ -40,8 +40,6 @@ const TableList: React.FC = () => {
               </Col>
             </Row>
           </Form>
-
-
         </section>
         <section></section>
         <section></section>
